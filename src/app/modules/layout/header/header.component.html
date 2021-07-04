@@ -1,0 +1,21 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="container-xxl flex-wrap flex-md-nowrap">
+    <a class="navbar-brand" routerLink="/" >Smart shop</a>
+    
+    <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+      <li class="nav-item col-4 col-md-auto" style="padding: 5px;">
+        <button type="button" class="btn btn-primary position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" style="height: 50px; width: 50px;">
+          <i class="bi-cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" style="font-size: 25px; color: white;"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cartStore.totalQuantity }}
+          </span>
+        </button>
+      </li>
+      <li class="nav-item col-4 col-md-auto" style="padding: 5px;">
+        <button type="button" class="btn btn-success position-relative">
+          <i class="bi-person-circle" style="font-size: 25px; color: white;"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>

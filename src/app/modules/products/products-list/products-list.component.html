@@ -1,0 +1,20 @@
+<div class="container">
+  <br />
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <button type="button" class="btn btn-primary" aria-label="Remove" style="float:right;" (click)="searchProducts()">
+        <i class="bi-search" style="font-size: 15px; color: white;"></i>
+      </button>
+      <input type="text" style="width:88%;" class="form-control" [ngModel]="search" (ngModelChange)="doGlobalSearch($event)" />
+      
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-xl-4 col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let product of products">
+      <app-product-container [product]="product"></app-product-container>
+    </div>
+  </div>
+  <br />
+  <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [maxSize]="3" [rotate]="true" [boundaryLinks]="true" (pageChange)=changePage($event)></ngb-pagination>
+</div>
