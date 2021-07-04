@@ -27,6 +27,6 @@ export class Authorization {
   }
 
   public get isAdmin(): boolean {
-    return this._isAdmin.value();
+    return this._isAdmin.getValue();
   }
 }

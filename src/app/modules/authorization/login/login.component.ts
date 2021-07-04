@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/services/authorization.service';
+import { ToastService } from 'src/app/services/toasts/toasts.service';
 import { Authorization } from 'src/app/store/authorization.store';
 import { User as UserModel} from '../../../models/user.model';
 
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthorizationService,
-    private authState: Authorization
+    private authState: Authorization,
+    private toastService: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -37,7 +41,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     } else {
       currentUser = this.authService.login(this.users, userId);
     }
-    this.authState.currentUser = currentUser;
+    if (currentUser) {
+      this.authState.currentUser = currentUser;
+      this.router.navigate(['/']);
+    } else {
+      this.toastService.showError('Incorrect username or password.', { delay: 5000 });
+    }
   }
 
   ngOnDestroy() {
