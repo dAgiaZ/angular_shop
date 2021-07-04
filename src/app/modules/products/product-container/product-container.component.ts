@@ -42,7 +42,7 @@ export class ProductContainerComponent implements OnInit {
 
   private recalcCart(products: CartModel['products'], newProduct: CartModel['products'][0]): CartModel['products'] {
     let updated: boolean = false;
-    let updatedProducts: CartModel['products'] = products.map( product => {
+    let updatedProducts: CartModel['products'] = products.map( (product: CartModel['products'][0]) => {
       if (product.id === newProduct.id) {
         product.quantity += newProduct.quantity;
         updated = true;

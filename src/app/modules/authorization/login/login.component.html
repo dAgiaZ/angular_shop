@@ -1,0 +1,31 @@
+<div class="container">
+  <br />
+  <h6>
+    Select an user and click in Sign in button to simulate login 
+  </h6>
+  <br />
+  <ul class="nav nav-tabs" id="usersTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="true">Users</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="admins-tab" data-bs-toggle="tab" data-bs-target="#admins" type="button" role="tab" aria-controls="admin" aria-selected="false">Administrators</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="usersTabContent">
+    <div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="users-tab">
+      <select class="form-select" size="15" multiple aria-label="multiple select example" id="usersSelect" #usersSelect>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.name.firstName + ' ' + user.name.lastName }}</option>
+      </select>
+      <br />
+      <button class="btn btn-primary" (click)="login('CUSTOMER', usersSelect.value)">Sign In</button>
+    </div>
+    <div class="tab-pane fade" id="admins" role="tabpanel" aria-labelledby="admins-tab">
+      <select class="form-select" size="15" multiple aria-label="multiple select example" id="adminSelect" #adminSelect>
+        <option *ngFor="let admin of adminUsers" [value]="admin.id">{{ admin.name.firstName + ' ' + admin.name.lastName }}</option>
+      </select>
+      <br />
+      <button class="btn btn-primary" (click)="login('ADMIN', adminSelect.value)">Sign In</button>
+    </div>
+  </div>
+</div>
