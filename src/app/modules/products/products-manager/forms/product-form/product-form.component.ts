@@ -12,8 +12,8 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductFormComponent implements OnInit, OnDestroy {
   @Input() data: any;
   productForm: FormGroup;
-  private updSubscriber: any;
-  private createSubscriber: any;
+  private updSubscriber$: any;
+  private createSubscriber$: any;
   constructor(
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
@@ -33,7 +33,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
   save() {
     if (this.data.operation === 'new') {
-      this.createSubscriber = this.productsServices.createProduct(this.productForm.value).subscribe( product => {
+      this.createSubscriber$ = this.productsServices.createProduct(this.productForm.value).subscribe( product => {
         this.toastService.showSuccess('Product successfully created.');
         this.activeModal.close(true);
       },
@@ -41,7 +41,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         this.toastService.showError('Error while creating a product, try later');
       })
     } else if (this.data.operation === 'edit') {
-      this.updSubscriber = this.productsServices.updateProduct(this.productForm.value, this.data.id).subscribe( product => {
+      this.updSubscriber$ = this.productsServices.updateProduct(this.productForm.value, this.data.id).subscribe( product => {
         this.toastService.showSuccess('Product successfully updated.');
         this.activeModal.close(true);
       },
@@ -52,10 +52,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.createSubscriber)
-      this.createSubscriber.unsubscribe();
-    if (this.updSubscriber)
-      this.updSubscriber.unsubscribe();
+    if (this.createSubscriber$)
+      this.createSubscriber$.unsubscribe();
+    if (this.updSubscriber$)
+      this.updSubscriber$.unsubscribe();
   }
 
 }

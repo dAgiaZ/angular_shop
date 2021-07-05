@@ -13,7 +13,7 @@ import { User as UserModel} from '../../../models/user.model';
 export class LoginComponent implements OnInit, OnDestroy {
   adminUsers: UserModel[] = [];
   users: UserModel[] = [];
-  usersSubscriber: any
+  usersSubscriber$: any
 
   constructor(
     private authService: AuthorizationService,
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.usersSubscriber = this.authService.getUsers().subscribe( (users: UserModel[]) => {
+    this.usersSubscriber$ = this.authService.getUsers().subscribe( (users: UserModel[]) => {
       users.map( (user: UserModel) => {
         if (user.role === 'ADMIN') {
           this.adminUsers.push(user);
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.usersSubscriber.unsubscribe();
+    this.usersSubscriber$.unsubscribe();
   }
 
 }

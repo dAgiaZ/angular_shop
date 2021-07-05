@@ -10,7 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DeleteProductFormComponent implements OnInit, OnDestroy {
   @Input() data: any;
-  private productSubscriber: any;
+  private productSubscriber$: any;
 
   constructor(
     private productService: ProductsService,
@@ -22,7 +22,7 @@ export class DeleteProductFormComponent implements OnInit, OnDestroy {
   }
 
   deleteProduct() {
-    this.productSubscriber = this.productService.deleteProduct(this.data.id).subscribe( () => {
+    this.productSubscriber$ = this.productService.deleteProduct(this.data.id).subscribe( () => {
       this.activeModal.close();
       this.toastService.showSuccess('Product successfully deleted.');
     }, () => {
@@ -32,8 +32,8 @@ export class DeleteProductFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.productSubscriber)
-      this.productSubscriber.unsubscribe();
+    if (this.productSubscriber$)
+      this.productSubscriber$.unsubscribe();
   }
 
 }

@@ -19,7 +19,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   cartProducts: DetailedProductCart[];
   total: number = 0;
   private cart: CartModel;
-  private cartSubscriber: Subscriber<CartModel>;
+  private cartSubscriber$: Subscriber<CartModel>;
 
   constructor(
     private cartStore: Cart,
@@ -29,7 +29,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.cartSubscriber = this.cartStore.cartState$.subscribe( async (cart: CartModel) => {
+    this.cartSubscriber$ = this.cartStore.cartState$.subscribe( async (cart: CartModel) => {
       if (cart.products && cart.products.length >= 0) {
         this.cart = cart;
         await this.updateCartList(cart);
@@ -87,6 +87,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.cartSubscriber.unsubscribe();
+    this.cartSubscriber$.unsubscribe();
   }
 }

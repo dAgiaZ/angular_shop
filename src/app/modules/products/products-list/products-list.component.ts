@@ -9,7 +9,7 @@ import { Product } from '../../../models/product.model';
 })
 export class ProductsListComponent implements OnInit {
   products: Product[];
-  private productsSubscriber: any;
+  private productsSubscriber$: any;
   totalCount: number;
   page: number = 1;
   globalSearch: string;
@@ -29,7 +29,7 @@ export class ProductsListComponent implements OnInit {
     if (this.globalSearch) {
       params.q = this.globalSearch;
     }
-    this.productsSubscriber = this.productsService.getProducts(params).subscribe( response => {
+    this.productsSubscriber$ = this.productsService.getProducts(params).subscribe( response => {
       this.totalCount = response.headers.get('X-Total-Count');
       this.products = response.body;
     });
@@ -47,6 +47,6 @@ export class ProductsListComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.productsSubscriber.unsubscribe();
+    this.productsSubscriber$.unsubscribe();
   }
 }
