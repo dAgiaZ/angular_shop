@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from '../../../models/product.model';
-
+import { ProductFormComponent } from './forms/product-form/product-form.component';
 @Component({
   selector: 'app-products-manager',
   templateUrl: './products-manager.component.html',
@@ -14,7 +15,10 @@ export class ProductsManagerComponent implements OnInit  {
   page: number = 1;
   globalSearch: string;
   
-  constructor(private readonly productsService: ProductsService) { }
+  constructor(
+    private readonly productsService: ProductsService,
+    private modalService: ModalService
+  ) { }
 
   ngOnInit() {
     this.getProducts();
@@ -48,6 +52,17 @@ export class ProductsManagerComponent implements OnInit  {
 
   ngOnDestroy() {
     this.productsSubscriber.unsubscribe();
+  }
+
+  openModal(product, operation) {
+    const data = { operation, ...product};
+    const modalRef: any = this.modalService.open(ProductFormComponent);
+    modalRef.componentInstance.data = data;
+    modalRef.result.then((result: boolean) => {
+      if (result) {
+        this.getProducts();
+      }
+    })
   }
 
 }

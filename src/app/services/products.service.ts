@@ -21,4 +21,16 @@ export class ProductsService {
     }
   }
 
+  createProduct(params: any): Observable<any>{
+    return this.http.post<Observable<any>>(`${this.apiUrl}/products`, params);
+  }
+
+  updateProduct(params: any, productId: number): Observable<any>{
+    return this.http.put<Observable<any>>(`${this.apiUrl}/products/${productId}`, params);
+  }
+
+  getRecommendeds(): Observable<any>{
+    return this.http.get<Observable<any>>(`${this.apiUrl}/recommendeds`);
+  }
+
 }

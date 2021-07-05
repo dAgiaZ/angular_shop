@@ -12,5 +12,5 @@
     </div>
   </div>
   <br />
-  <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [maxSize]="3" [rotate]="true" [boundaryLinks]="true" (pageChange)=changePage($event)></ngb-pagination>
+  <ngb-pagination *ngIf="products && products.length" [collectionSize]="totalCount" [(page)]="page" [maxSize]="3" [rotate]="true" [boundaryLinks]="true" (pageChange)=changePage($event)></ngb-pagination>
 </div>
