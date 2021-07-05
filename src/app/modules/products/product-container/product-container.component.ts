@@ -33,7 +33,7 @@ export class ProductContainerComponent implements OnInit {
   addToCart(): void {
     let products: CartModel['products'] = [...this.cartStore.cartState.products];
     const updatedProducts: CartModel['products'] = this.recalcCart(products, this.addToCartForm.value);
-    this.cartService.updateCart(5, { products: updatedProducts }).subscribe( cart => {
+    this.cartService.updateCart(this.authState.currentUser.id, { products: updatedProducts }).subscribe( cart => {
       this.cartStore.cartState = cart;
       this.toastService.showSuccess('Product successfully added to cart.', { delay: 5000 });
     }, 

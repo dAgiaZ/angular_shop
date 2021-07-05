@@ -18,8 +18,12 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cartService.getCart(5).subscribe( (cart: CartModel) => {
-      this.cartStore.cartState = cart
+    this.authStore.currentUser$.subscribe( () => {
+      if (this.authStore.currentUser) {
+        this.cartService.getCart(this.authStore.currentUser.id).subscribe( (cart: CartModel) => {
+          this.cartStore.cartState = cart;
+        })
+      }
     })
   }
 
