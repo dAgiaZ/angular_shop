@@ -4,16 +4,16 @@
     <a class="nav-item" routerLink="/products">View all products</a>
     <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
       <li class="nav-item col-4 col-md-auto" style="padding: 5px;" *ngIf="authStore.currentUser">
-        <button type="button" class="btn btn-primary position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" style="height: 50px; width: 50px;">
-          <i class="bi-cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" style="font-size: 25px; color: white;"></i>
+        <button type="button" class="btn btn-primary position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-shopping-cart" role="button" style="height: 50px; width: 50px;">
+          <i class="bi-cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-shopping-cart" style="font-size: 25px; color: white;"></i>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             {{ cartStore.totalQuantity }}
           </span>
         </button>
       </li>
-      <li class="nav-item col-4 col-md-auto" style="padding: 5px;" *ngIf="authStore.currentUser">
-        <button type="button" class="btn btn-success position-relative">
-          <i class="bi-person-circle" style="font-size: 25px; color: white;"></i>
+      <li class="nav-item col-4 col-md-auto" style="padding: 5px;"  *ngIf="authStore.currentUser">
+        <button type="button" class="btn btn-success position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-users-menu" role="button">
+          <i class="bi-person-circle" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-users-menu" style="font-size: 25px; color: white;"></i>
         </button>
       </li>
       <li class="nav-item col-4 col-md-auto" style="padding: 5px;" *ngIf="!authStore.currentUser">

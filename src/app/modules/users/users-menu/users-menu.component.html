@@ -1,0 +1,23 @@
+<div class="offcanvas offcanvas-end w-40" tabindex="-1" id="offcanvas-users-menu" data-bs-keyboard="false" data-bs-backdrop="false">
+  <div class="offcanvas-header">
+      <h6 class="offcanvas-title d-none d-sm-block" id="offcanvas-users-menu">{{ authState.currentUser?.name?.firstName + ' ' + authState.currentUser?.name?.lastName }}</h6>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  
+  <div class="offcanvas-body px-0">
+      <ol class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-start" data-bs-dismiss="offcanvas">
+          View profile (Under construction)
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start" data-bs-dismiss="offcanvas">
+          View orders (Under construction)
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start" data-bs-dismiss="offcanvas" *ngIf="authState.isAdmin">
+          Manage products
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start" data-bs-dismiss="offcanvas" (click)="logout()">
+          Sign out
+        </li>
+      </ol>
+  </div>
+</div>
