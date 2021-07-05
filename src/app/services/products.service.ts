@@ -33,4 +33,8 @@ export class ProductsService {
     return this.http.get<Observable<any>>(`${this.apiUrl}/recommendeds`);
   }
 
+  deleteProduct(productId: number): Observable<any>{
+    return this.http.delete<Observable<any>>(`${this.apiUrl}/products/${productId}`);
+  }
+
 }

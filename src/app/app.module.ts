@@ -8,13 +8,15 @@ import { LayoutModule } from './modules/layout/layout.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsContainer } from './services/toasts/toasts-container.component';
 import { ProductFormComponent } from './modules/products/products-manager/forms/product-form/product-form.component';
+import { DeleteProductFormComponent } from './modules/products/products-manager/forms/delete-product-form/delete-product-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToastsContainer,
-    ProductFormComponent
+    ProductFormComponent,
+    DeleteProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [],
-  entryComponents: [ProductFormComponent],
+  entryComponents: [ProductFormComponent, DeleteProductFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from '../../../models/product.model';
+import { DeleteProductFormComponent } from './forms/delete-product-form/delete-product-form.component';
 import { ProductFormComponent } from './forms/product-form/product-form.component';
 @Component({
   selector: 'app-products-manager',
@@ -62,6 +63,14 @@ export class ProductsManagerComponent implements OnInit  {
       if (result) {
         this.getProducts();
       }
+    })
+  }
+
+  openDeleteModal(product) {
+    const modalRef: any = this.modalService.open(DeleteProductFormComponent);
+    modalRef.componentInstance.data = product;
+    modalRef.result.then(() => {
+      this.getProducts();
     })
   }
 

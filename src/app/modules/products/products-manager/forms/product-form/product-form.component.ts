@@ -31,7 +31,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     this.productForm.patchValue(this.data);
   }
 
-  async save() {
+  save() {
     if (this.data.operation === 'new') {
       this.createSubscriber = this.productsServices.createProduct(this.productForm.value).subscribe( product => {
         this.toastService.showSuccess('Product successfully created.');
