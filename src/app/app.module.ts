@@ -7,20 +7,26 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './modules/layout/layout.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsContainer } from './services/toasts/toasts-container.component';
+import { ProductFormComponent } from './modules/products/products-manager/forms/product-form/product-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToastsContainer
+    ToastsContainer,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
+  entryComponents: [ProductFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

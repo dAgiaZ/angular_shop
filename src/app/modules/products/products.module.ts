@@ -6,9 +6,10 @@ import { ProductContainerComponent } from './product-container/product-container
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsManagerComponent } from './products-manager/products-manager.component';
+import { RecommendedProductsComponent } from './recommended-products/recommended-products.component';
 
 @NgModule({
-  declarations: [ProductsListComponent, ProductContainerComponent, ProductsManagerComponent],
+  declarations: [ProductsListComponent, ProductContainerComponent, ProductsManagerComponent, RecommendedProductsComponent],
   imports: [
     CommonModule,
     ProductsRoutingModule,
