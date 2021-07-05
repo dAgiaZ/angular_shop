@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Authorization } from 'src/app/store/authorization.store';
 
 @Component({
@@ -9,7 +10,8 @@ import { Authorization } from 'src/app/store/authorization.store';
 export class UsersMenuComponent implements OnInit {
 
   constructor(
-    public authState: Authorization
+    public authState: Authorization,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -17,5 +19,6 @@ export class UsersMenuComponent implements OnInit {
 
   logout(): void {
     this.authState.currentUser = null;
+    this.router.navigate(['/']);
   }
 }

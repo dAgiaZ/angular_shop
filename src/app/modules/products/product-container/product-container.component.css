@@ -4,3 +4,26 @@ input[type=number] {
 .product-container {
   height: 230px;
 }
+
+.product-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 50%;
+}
+
+.add-button {
+  font-size: 25px;
+  margin-left: 5px; 
+}
+.add-button:hover {
+  color: cornflowerblue;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

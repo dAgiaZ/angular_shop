@@ -4,6 +4,7 @@ import { ToastService } from 'src/app/services/toasts/toasts.service';
 import { CartService } from 'src/app/services/cart.service';
 import { Cart } from 'src/app/store/cart.store';
 import { Cart as CartModel, Product } from '../../../models/index';
+import { Authorization } from 'src/app/store/authorization.store';
 
 @Component({
   selector: 'app-product-container',
@@ -18,7 +19,8 @@ export class ProductContainerComponent implements OnInit {
     private formBuilder: FormBuilder,
     private cartStore: Cart,
     private cartService: CartService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    public authState: Authorization
   ) { }
 
   ngOnInit() {

@@ -2,11 +2,7 @@
   <br />
   <div class="row justify-content-md-center">
     <div class="col-md-4">
-      <button type="button" class="btn btn-primary" aria-label="Remove" style="float:right;" (click)="searchProducts()">
-        <i class="bi-search" style="font-size: 15px; color: white;"></i>
-      </button>
-      <input type="text" style="width:88%;" class="form-control" [ngModel]="search" (ngModelChange)="doGlobalSearch($event)" />
-      
+      <input type="text" style="width:88%;" class="form-control" [ngModel]="search" (ngModelChange)="doGlobalSearch($event)" placeholder="Search product..." />
     </div>
   </div>
   <br />

@@ -12,7 +12,7 @@
         <li class="list-group-item d-flex justify-content-between align-items-start" data-bs-dismiss="offcanvas">
           View orders (Under construction)
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start" data-bs-dismiss="offcanvas" *ngIf="authState.isAdmin">
+        <li class="list-group-item d-flex justify-content-between align-items-start" data-bs-dismiss="offcanvas" *ngIf="authState.isAdmin" routerLink="/products/manager">
           Manage products
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-start" data-bs-dismiss="offcanvas" (click)="logout()">
