@@ -2,23 +2,23 @@
   <nav class="container-xxl flex-wrap flex-md-nowrap">
     <a class="navbar-brand" routerLink="/" >Smart shop</a>
     <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-      <li class="nav-item col-4 col-md-auto" style="padding: 5px;" *ngIf="authStore.currentUser">
-        <button type="button" class="btn btn-primary position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-shopping-cart" role="button" style="height: 50px; width: 50px;">
+      <li class="nav-item col col-md-auto" style="padding: 5px;" *ngIf="authStore.currentUser" >
+        <span role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-shopping-cart" title="Shpping Cart">
           <i class="bi-cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-shopping-cart" style="font-size: 25px; color: white;"></i>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          <span class="position-absolute badge rounded-pill bg-danger">
             {{ cartStore.totalQuantity }}
           </span>
-        </button>
+        </span>
       </li>
-      <li class="nav-item col-4 col-md-auto" style="padding: 5px;"  *ngIf="authStore.currentUser">
-        <button type="button" class="btn btn-success position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-users-menu" role="button">
+      <li class="nav-item col col-md-auto" style="padding: 5px; margin-left: 25px;" *ngIf="authStore.currentUser" >
+        <span role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-users-menu" title="Shpping Cart">
           <i class="bi-person-circle" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-users-menu" style="font-size: 25px; color: white;"></i>
-        </button>
+        </span>
       </li>
-      <li class="nav-item col-4 col-md-auto" style="padding: 5px;" *ngIf="!authStore.currentUser">
-        <button type="button" class=" position-relative" routerLink="/auth/login">
+      <li class="nav-item col col-md-auto" style="padding: 5px;" *ngIf="!authStore.currentUser">
+        <span role="button" class="btn btn-outline-light start-100 position-relative" routerLink="/auth/login" >
           Sign in
-        </button>
+        </span>
       </li>
     </ul>
   </nav>
