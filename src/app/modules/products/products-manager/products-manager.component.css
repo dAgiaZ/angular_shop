@@ -1,0 +1,9 @@
+.money {
+  text-align: right;
+}
+.edit-button:hover {
+  color: cornflowerblue;
+}
+.delete-button:hover {
+  color: red;
+}
