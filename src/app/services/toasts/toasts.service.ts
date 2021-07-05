@@ -11,14 +11,14 @@ export class ToastService {
       if (this.toasts[this.toasts.length - 1]) {
         this.remove(this.toasts[this.toasts.length - 1]);
       }
-    }, options.delay || 5000)
+    }, options.delay || 5000);
   }
 
   showSuccess(textOrTpl: string | TemplateRef<any>, options?: any) {
     options = {
       classname: 'bg-success text-light',
       ...options
-    }
+    };
     this.show(textOrTpl, options);
   }
 
@@ -26,7 +26,7 @@ export class ToastService {
     options = {
       classname: 'bg-danger text-light',
       ...options
-    }
+    };
     this.show(textOrTpl, options);
   }
 

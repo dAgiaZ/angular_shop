@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from '../../../models/product.model';
 
@@ -7,20 +7,21 @@ import { Product } from '../../../models/product.model';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, OnDestroy {
   products: Product[];
   private productsSubscriber$: any;
   totalCount: number;
-  page: number = 1;
+  page = 1;
   globalSearch: string;
-  
+
   constructor(private readonly productsService: ProductsService) { }
 
   ngOnInit() {
     this.getProducts();
   }
 
-  getProducts(page: number = 1, extraParams?: any): void{
+  getProducts(page: number = 1, extraParams?: any): void {
+    // tslint:disable-next-line
     let params = {
       _page: page,
       _limit: 6,

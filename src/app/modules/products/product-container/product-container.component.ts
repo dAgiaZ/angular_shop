@@ -31,20 +31,20 @@ export class ProductContainerComponent implements OnInit {
   }
 
   addToCart(): void {
-    let products: CartModel['products'] = [...this.cartStore.cartState.products];
+    const products: CartModel['products'] = [...this.cartStore.cartState.products];
     const updatedProducts: CartModel['products'] = this.recalcCart(products, this.addToCartForm.value);
     this.cartService.updateCart(this.authState.currentUser.id, { products: updatedProducts }).subscribe( cart => {
       this.cartStore.cartState = cart;
       this.toastService.showSuccess('Product successfully added to cart.', { delay: 5000 });
-    }, 
+    },
     () => {
       this.toastService.showError('Error while trying to add product to cart.', { delay: 5000 });
     });
   }
 
   private recalcCart(products: CartModel['products'], newProduct: CartModel['products'][0]): CartModel['products'] {
-    let updated: boolean = false;
-    let updatedProducts: CartModel['products'] = products.map( (product: CartModel['products'][0]) => {
+    let updated = false;
+    const updatedProducts: CartModel['products'] = products.map( (product: CartModel['products'][0]) => {
       if (product.id === newProduct.id) {
         product.quantity += newProduct.quantity;
         updated = true;

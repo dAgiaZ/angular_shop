@@ -39,7 +39,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       },
       () => {
         this.toastService.showError('Error while creating a product, try later');
-      })
+      });
     } else if (this.data.operation === 'edit') {
       this.updSubscriber$ = this.productsServices.updateProduct(this.productForm.value, this.data.id).subscribe( product => {
         this.toastService.showSuccess('Product successfully updated.');
@@ -47,15 +47,16 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       },
       () => {
         this.toastService.showError('Error while updating a product, try later');
-      })
+      });
     }
   }
 
   ngOnDestroy() {
-    if (this.createSubscriber$)
+    if (this.createSubscriber$) {
       this.createSubscriber$.unsubscribe();
-    if (this.updSubscriber$)
+    }
+    if (this.updSubscriber$) {
       this.updSubscriber$.unsubscribe();
+    }
   }
-
 }

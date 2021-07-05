@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from '../../../models/product.model';
@@ -9,13 +9,13 @@ import { ProductFormComponent } from './forms/product-form/product-form.componen
   templateUrl: './products-manager.component.html',
   styleUrls: ['./products-manager.component.css']
 })
-export class ProductsManagerComponent implements OnInit  {
+export class ProductsManagerComponent implements OnInit, OnDestroy  {
   products: Product[];
   private productsSubscriber$: any;
   totalCount: number;
-  page: number = 1;
+  page = 1;
   globalSearch: string;
-  
+
   constructor(
     private readonly productsService: ProductsService,
     private modalService: ModalService
@@ -25,7 +25,8 @@ export class ProductsManagerComponent implements OnInit  {
     this.getProducts();
   }
 
-  getProducts(page: number = 1, extraParams?: any): void{
+  getProducts(page: number = 1, extraParams?: any): void {
+    // tslint:disable-next-line
     let params = {
       _page: page,
       _limit: 10,
@@ -63,7 +64,7 @@ export class ProductsManagerComponent implements OnInit  {
       if (result) {
         this.getProducts();
       }
-    })
+    });
   }
 
   openDeleteModal(product) {
@@ -71,7 +72,7 @@ export class ProductsManagerComponent implements OnInit  {
     modalRef.componentInstance.data = product;
     modalRef.result.then(() => {
       this.getProducts();
-    })
+    });
   }
 
 }

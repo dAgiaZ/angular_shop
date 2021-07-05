@@ -13,7 +13,7 @@ import { User as UserModel} from '../../../models/user.model';
 export class LoginComponent implements OnInit, OnDestroy {
   adminUsers: UserModel[] = [];
   users: UserModel[] = [];
-  usersSubscriber$: any
+  usersSubscriber$: any;
 
   constructor(
     private authService: AuthorizationService,

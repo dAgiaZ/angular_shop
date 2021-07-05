@@ -7,12 +7,14 @@ import { User } from '../models/user.model';
 })
 
 export class Authorization {
+  // tslint:disable-next-line
   private readonly _currentUser: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   readonly currentUser$ = this._currentUser.asObservable();
+  // tslint:disable-next-line
   private readonly _isAdmin: any = new BehaviorSubject<boolean>(false);
   readonly isAdmin$ = this._isAdmin.asObservable();
 
-  constructor(){
+  constructor() {
     this.currentUser$.subscribe( (user: User) => {
       this._isAdmin.next(user && user.role === 'ADMIN');
     });

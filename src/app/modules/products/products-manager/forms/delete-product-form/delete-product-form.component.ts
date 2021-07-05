@@ -27,13 +27,12 @@ export class DeleteProductFormComponent implements OnInit, OnDestroy {
       this.toastService.showSuccess('Product successfully deleted.');
     }, () => {
       this.toastService.showError('Error deleting product');
-    })
-    
+    });
   }
 
   ngOnDestroy() {
-    if (this.productSubscriber$)
+    if (this.productSubscriber$) {
       this.productSubscriber$.unsubscribe();
+    }
   }
-
 }

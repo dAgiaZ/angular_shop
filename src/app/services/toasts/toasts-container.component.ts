@@ -21,9 +21,11 @@ import {ToastService} from './toasts.service';
       <ng-template #text>{{ toast.textOrTpl }}</ng-template>
     </ngb-toast>
   `,
+  // tslint:disable-next-line
   host: {'[class.ngb-toasts]': 'true'}
 })
-export class ToastsContainer {
+
+export class ToastsContainerComponent {
   constructor(public toastService: ToastService) {}
 
   isTemplate(toast) { return toast.textOrTpl instanceof TemplateRef; }

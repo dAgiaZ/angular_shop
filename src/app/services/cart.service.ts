@@ -19,6 +19,6 @@ export class CartService {
   }
 
   updateCart(userId: number = 1, params: Cart): Observable<Cart> {
-    return this.http.put<Cart>(`${this.apiUrl}/carts/${userId}`, params)
+    return this.http.put<Cart>(`${this.apiUrl}/carts/${userId}`, params);
   }
 }

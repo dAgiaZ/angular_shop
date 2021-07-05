@@ -19,6 +19,7 @@ export class AuthorizationService {
   }
 
   login(userList: User[], userId: number): User {
+    // tslint:disable-next-line
     return userList.find( (user: User) => user.id == userId);
   }
 }

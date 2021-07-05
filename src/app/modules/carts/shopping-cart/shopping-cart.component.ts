@@ -3,11 +3,11 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Cart } from 'src/app/store/cart.store';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastService } from '../../../services/toasts/toasts.service';
-import { Cart as CartModel, Product} from '../../../models/index'
+import { Cart as CartModel, Product} from '../../../models/index';
 import { Observer, Subscriber } from 'rxjs';
 
 interface DetailedProductCart extends Product {
-  quantity?: number
+  quantity?: number;
 }
 
 @Component({
@@ -17,7 +17,7 @@ interface DetailedProductCart extends Product {
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
   cartProducts: DetailedProductCart[];
-  total: number = 0;
+  total = 0;
   private cart: CartModel;
   private cartSubscriber$: Subscriber<CartModel>;
 
@@ -39,15 +39,17 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   private async updateCartList(cart: CartModel) {
     if (cart.products.length) {
-      const ids: Array<string> = cart.products.map( (product: CartModel['products'][0]) => `id=${product.id}`)
+      const ids: Array<string> = cart.products.map( (product: CartModel['products'][0]) => `id=${product.id}`);
       const params: string = ids.join('&');
-      const productsDetails: Product[] = await this.productsService.getProducts(params).toPromise()
+      const productsDetails: Product[] = await this.productsService.getProducts(params).toPromise();
       this.cartProducts = productsDetails.map( (product: DetailedProductCart ) => {
-        let cartProduct: CartModel['products'][0] = cart.products.find( (cartProduct: CartModel['products'][0]) => cartProduct.id === product.id);
-        if (cartProduct) {
-          product.quantity = cartProduct.quantity;
+        const currentCartProduct: CartModel['products'][0] = cart.products.find(
+          (cartProduct: CartModel['products'][0]) => cartProduct.id === product.id
+        );
+        if (currentCartProduct) {
+          product.quantity = currentCartProduct.quantity;
         }
-        return product
+        return product;
       });
     } else {
       this.cartProducts = [];
@@ -58,15 +60,17 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   updateProductOnCart(event): void {
     this.cart.products = this.cart.products.map( (product: CartModel['products'][0]) => {
+      // tslint:disable-next-line
       if (product.id == event.target.id) {
-        product.quantity = parseInt(event.target.value);
+        product.quantity = Number(event.target.value);
       }
       return product;
-    })
-    this.updateCart()
+    });
+    this.updateCart();
   }
 
   removeProductFromCart(productId: number): void {
+    // tslint:disable-next-line
     this.cart.products = this.cart.products.filter( (product: CartModel['products'][0]) => product.id != productId);
     this.updateCart();
   }

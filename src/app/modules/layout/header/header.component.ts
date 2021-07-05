@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Authorization } from 'src/app/store/authorization.store';
 import { Cart } from 'src/app/store/cart.store';
-import { Cart as CartModel} from '../../../models/cart.model'
+import { Cart as CartModel} from '../../../models/cart.model';
 
 @Component({
   selector: 'app-header',
@@ -22,9 +22,9 @@ export class HeaderComponent implements OnInit {
       if (this.authStore.currentUser) {
         this.cartService.getCart(this.authStore.currentUser.id).subscribe( (cart: CartModel) => {
           this.cartStore.cartState = cart;
-        })
+        });
       }
-    })
+    });
   }
 
 }
